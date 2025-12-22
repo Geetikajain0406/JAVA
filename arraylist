@@ -1,0 +1,20 @@
+import java.util.Scanner;
+import java.util.ArrayList;
+
+    public class arraylistdemo{
+    public static void main(String[] args) {
+        ArrayList<String> stud=new ArrayList<>();
+        stud.add("geet");
+        stud.add("geetika");
+        stud.add("hehehe");
+        System.out.println("students :"+stud);
+        stud.add(1,"wait");
+         System.out.println("students :"+stud);
+          System.out.println("students :"+stud.get(0));
+           System.out.println("students alll:");
+           for (String s:stud){
+                System.out.println("-:"+s);
+           }
+    
+    }
+}
