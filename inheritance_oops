@@ -1,0 +1,37 @@
+class vehicle{
+    String brand;
+    String model;
+    int year;
+    vehicle(String b,String m,int y){
+        brand =b;
+        model=m;
+        year=y;
+    }
+    void dis(){
+        System.out.println("the brand is : "+brand);
+        System.out.println("the model is : "+model);
+        System.out.println("the year is : "+year);
+    }
+}
+class car extends vehicle{
+    int door;
+    car(String b,String m,int y,int d){
+        super( b, m,y);
+        this.door=d;
+    }
+    @Override
+    void dis(){
+        super.dis();
+         System.out.println("the door is : "+door);
+    }
+}
+public class Main {
+    public static void main(String[] args) {
+        System.out.println("=== Parent Object ===");
+        vehicle v1=new vehicle("kia","seltos",1990);
+        v1.dis();
+        System.out.println("=== Child Object ===");
+        car c=new car("maruti","suzuki",1998,4);
+        c.dis();
+    }
+}
