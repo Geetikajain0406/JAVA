@@ -7,6 +7,9 @@ class vehicle{
         model=m;
         year=y;
     }
+     final void display(){
+         System.out.println("this display function cannot be ovveriden");
+    }
     void dis(){
         System.out.println("the brand is : "+brand);
         System.out.println("the model is : "+model);
@@ -19,6 +22,7 @@ class car extends vehicle{
         super( b, m,y);
         this.door=d;
     }
+   
     @Override
     void dis(){
         super.dis();
@@ -30,8 +34,10 @@ public class Main {
         System.out.println("=== Parent Object ===");
         vehicle v1=new vehicle("kia","seltos",1990);
         v1.dis();
+        v1.display();
         System.out.println("=== Child Object ===");
         car c=new car("maruti","suzuki",1998,4);
         c.dis();
     }
 }
+
