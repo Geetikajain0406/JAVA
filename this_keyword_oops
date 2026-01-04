@@ -1,0 +1,26 @@
+class stud {
+    String name;
+    int age;
+    String maakanaam;
+stud(String n,int a,String m){
+    
+        this.name = n;
+        this.age = a;
+        this.maakanaam = m;
+
+}
+    void display() {
+        System.out.println("name: " + name);
+        System.out.println("age: " + age);
+        System.out.println("maakanaam: " + maakanaam);
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+
+        stud s1 = new stud("geetika",19,"pinky");
+      
+        s1.display();
+    }
+}
