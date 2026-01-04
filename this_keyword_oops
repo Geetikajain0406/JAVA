@@ -9,8 +9,12 @@ stud(String n,int a,String m){
         this.maakanaam = m;
 
 }
+stud(String na,int ag){
+    this(na,ag,"unknown");
+    System.out.println("another type");
+}
     void display() {
-        System.out.println("name: " + name);
+        System.out.println("name: " + this.name);
         System.out.println("age: " + age);
         System.out.println("maakanaam: " + maakanaam);
     }
@@ -20,7 +24,8 @@ public class Main {
     public static void main(String[] args) {
 
         stud s1 = new stud("geetika",19,"pinky");
-      
         s1.display();
+        stud s2=new stud("geet",19);
+        s2.display();
     }
 }
