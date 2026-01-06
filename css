@@ -1,0 +1,47 @@
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #ffffff;
+}
+
+.container {
+    width: 900px;
+    margin: auto;
+    display: flex;
+}
+
+.image-box {
+margin-top=30%;
+    width: 40%;
+}
+
+.image-box img {
+    width: 100%;
+margin-top=30%;
+}
+
+.form-box {
+    width: 60%;
+    padding: 20px;
+}
+
+h2 {
+    text-align: center;
+}
+
+hr {
+    border: 1px solid red;
+    width: 90%;
+}
+
+input, textarea {
+    padding: 5px;
+    margin: 3px;
+}
+
+input[type="submit"] {
+    padding: 8px 20px;
+    background-color: lightgray;
+    border: 1px solid black;
+    cursor: pointer;
+}
