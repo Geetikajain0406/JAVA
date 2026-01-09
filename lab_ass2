@@ -1,0 +1,83 @@
+Basic code;
+import java.util.Scanner
+public class Main{
+public static void main(String[] args){
+System.out.println("hello here");
+}
+}
+Ans 1
+public class Main {
+    public static void main(String[] args) {
+        int n = 100;
+
+        if (n <= 60) {
+            System.out.println("no fine");
+        } 
+        else if (n > 60 && n <= 81) { 
+            System.out.println("100 rs fine");
+        } 
+        else if (n > 81 && n <= 100) {
+            System.out.println("250 rs fine");
+        } 
+        else {
+            System.out.println("500 rs fine");
+        }
+    }
+}
+Ans 2
+import java.util.Scanner;
+public class Main {
+    public static void main(String[] args) {
+       
+   Scanner sc=new Scanner(System.in);
+   System.out.println("enter your first number");
+  int a=sc.nextInt();
+   System.out.println("enter your second number");
+int b=sc.nextInt();
+sc.nextLine(); 
+System.out.println("enter your operator");
+   String operator=sc.nextLine();
+   int ab;
+       switch(operator){
+           case "add":
+                ab=a+b;
+               System.out.println("addition is"+ab);
+               break;
+        case "sub":
+                ab=a-b;
+               System.out.println("subtrraction is"+ab);
+               break;
+        case "mul":
+                ab=a*b;
+               System.out.println("multiplication  is"+ab);
+               break;
+       case "div":
+                ab=a/b;
+               System.out.println("div is"+ab);
+               break;
+       default:
+       System.out.println("Invalid ");
+       }
+    }
+}
+
+Ans 3
+import java.util.Scanner;
+public class Main {
+    public static void main(String[] args) {
+       
+   Scanner sc=new Scanner(System.in);
+   System.out.println("enter your salary");
+double bs=sc.nextDouble();
+  double hra=0.2*bs;
+ double da=0.1*bs;
+double pf=0.12*bs;
+  double pt=500;
+double net=(bs+hra+da)-(pf+pt);
+  System.out.println("your net sal"+net);
+  
+ 
+       
+    }
+}
+
