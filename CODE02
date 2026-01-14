@@ -1,0 +1,15 @@
+interface InterfaceVehicle {
+    // Only constants (public static final)
+    int MAX_SPEED = 200;
+    
+    // No constructor allowed
+    
+    // Abstract method (public abstract by default)
+    void start();
+    
+    // Default method (Java 8+)
+    default void stop() {
+        System.out.println("Vehicle stopping...");
+    }
+}
+
