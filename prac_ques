@@ -1,0 +1,68 @@
+class stud{
+  int roll;
+  String name;
+  int marks;
+  stud(){
+    
+  }
+  stud(int r,int m,String n){
+      roll=r;
+      marks=m;
+      name=n;
+  }
+  void set_roll(int r){
+      roll=r;
+  }
+   void set_marks(int m){
+      marks=m;
+  }
+   void set_name(String n){
+     name=n;
+  }
+  void display(){
+      System.out.println("the student name"+name);
+      System.out.println("the studentroll no"+roll);
+      System.out.println("the student marks"+marks);
+  }
+}
+
+class Main {
+    public static void main(String[] args) {
+        stud s1=new stud();
+        s1.set_name("geetika");
+         s1.set_roll(13);
+          s1.set_marks(100);
+           s1.display();
+    }
+}
+
+
+
+class bank{
+    int acc;
+    double bal;
+    bank(){
+        
+    }
+    void open(int a,double b){
+        acc=a;
+        bal=b;
+    }
+    void deposit(double b){
+        bal+=b;
+    }
+    void display(){
+        System.out.println("the acc no is "+acc);
+        System.out.println("the bal is "+bal);
+    }
+}
+
+class Main {
+    public static void main(String[] args) {
+        bank b= new bank();
+        b.open(123,400000);
+        b.display();
+        b.deposit(200000);
+        b.display();
+    }
+}
