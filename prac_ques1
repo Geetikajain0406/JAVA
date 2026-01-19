@@ -1,0 +1,81 @@
+1. University Registration System
+Case Study:
+A university wants to register students using default, parameterized, and copy constructors.
+Code:
+class Student {
+int roll;
+String name, dept;
+Student() {
+roll = 0;
+name = "Not Assigned";
+dept = "NA";
+}
+Student(int r, String n, String d) {
+roll = r;
+name = n;
+dept = d;
+}
+Student(Student s) {
+roll = s.roll;
+name = s.name;
+dept = s.dept;
+}
+}
+
+2. Bank Account Initialization
+Case Study:
+Demonstrate constructor overloading with default balance logic.
+Code:
+class BankAccount {
+String name;
+double balance;
+
+BankAccount() {
+balance = 1000;
+}
+BankAccount(String n, double b) {
+name = n;
+balance = b;
+}
+}
+
+3. Employee ID Auto Generation
+Case Study:
+Use static variable and constructor for auto ID generation.
+Code:
+class Employee {
+static int counter = 100;
+int empId;
+Employee() {
+empId = counter++;
+}
+}
+
+4. Immutable Student Record
+Case Study:
+Create immutable class using constructor.
+Code:
+final class Student {
+private final int roll;
+private final String name;
+Student(int r, String n) {
+roll = r;
+name = n;
+}
+}
+
+5. Constructor Chaining
+Case Study:
+Use this() to chain constructors.
+Code:
+class Student {
+int roll;
+String name;
+Student() {
+this(0, "NA");
+}
+Student(int r, String n) {
+roll = r;
+name = n;
+}
+}
