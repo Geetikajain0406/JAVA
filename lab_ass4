@@ -1,0 +1,140 @@
+Ans 1
+class stud{
+    String name;
+    int roll;
+    int m1;
+    int m2;
+    int m3;
+    stud(String n,int r,int a,int b,int c){
+        name=n;
+        roll=r;
+        m1=a;
+        m2=b;
+        m3=c;
+    }
+    void calc(){
+        System.out.println("name of stud is: "+name);
+        System.out.println("roll no of stud is: "+roll);
+        int res=m1+m2+m3;
+        System.out.println("the total of marks is: "+res);
+        int avg=res/3;
+        System.out.println("the avg of marks is: "+avg);
+    }
+}
+
+
+
+
+public class Main{
+    public static void main(String[] args){
+stud s1=new stud("geetika",20009,10,20,20);
+s1.calc();
+    }
+}
+
+Ans 2
+iimport java.util.Scanner;
+class person{
+String name;
+int age;
+person(String n,int a){
+    name=n;
+    age=a;
+}
+void display(){
+    System.out.println("the name of the stud is:"+name);
+    System.out.println("the age  of the stud is:"+age);
+}
+}
+
+
+
+
+public class Main{
+    public static void main(String[] args){
+        Scanner s1 = new Scanner(System.in);
+        System.out.println("enter your name and age");
+        String n=s1.nextLine();
+        int age =s1.nextInt();
+        person p1=new person(n, age);
+        p1.display();
+    }
+}
+Ans 3
+// Helper class
+class AccInfo {
+    private String acnum;
+    private double bal;
+    private String type;
+
+
+    AccInfo(String ano, double b, String t){
+        acnum = ano;
+        bal = b;
+        type = t;
+    }
+
+
+    void deposit(String a, double b){
+        if(acnum.equals(a)){
+            if(b > 0){
+                bal += b;
+                System.out.println("Your balance is: " + bal);
+            } else {
+                System.out.println("Negative balance not allowed. Current balance: " + bal);
+            }
+        } else {
+            System.out.println("Enter correct pin please");
+        }
+    }
+
+
+    void deposit(double b){
+        if(b > 0){
+            bal += b;
+            System.out.println("Your balance is: " + bal);
+        } else {
+            System.out.println("Negative balance not allowed. Current balance: " + bal);
+        }
+    }
+}
+
+
+// Public class with main
+public class Acc {
+    public static void main(String[] args){
+        AccInfo a = new AccInfo("1234", 2000, "saving");
+
+
+        a.deposit(20000);           // direct deposit
+        a.deposit("1234", 3000);    // correct acnum
+        a.deposit("1256", 2000);    // wrong acnum
+    }
+}
+
+
+ANS 4
+public class Acc {
+    public static void main(String[] args){
+        String sen = "Learning Java is both fun and rewarding";
+
+
+
+
+        String[] words = sen.split(" ");
+        System.out.println("Words in the sentence:");
+        for(String w : words){
+            System.out.println(w);
+        }
+        System.out.println("Total number of words: " + words.length);
+
+
+     
+        String replace = sen.replace("fun", "challenging");
+        System.out.println("\nSentence after replacement: " + replace);
+
+
+        String upper = sen.toUpperCase();
+        System.out.println("\nUppercase sentence: " + upper);
+    }
+}
