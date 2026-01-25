@@ -1,0 +1,19 @@
+class Square {
+    int side;
+
+    void set(int s) {
+        side = s;
+    }
+
+    int area() {
+        return side * side;
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Square sq = new Square();
+        sq.set(6);
+        System.out.println("Area of Square = " + sq.area());
+    }
+}
