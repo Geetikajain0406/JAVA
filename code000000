@@ -1,0 +1,24 @@
+class rect{
+    int len,bre;
+    rect(int len,int bre){
+        this.len=len;
+        this.bre=bre;
+    }
+    void area(){
+    System.out.println("the area of rect is"+len*bre);
+    }
+    rect doubleDimensions() {
+        this.len = this.len * 2;
+        this.bre = this.bre * 2;
+        return this;
+    }
+}
+class Main {
+    public static void main(String[] args) {
+rect r1=new rect(12,10);
+r1.area();
+ r1.doubleDimensions();
+ 
+      r1.area();
+    }
+
