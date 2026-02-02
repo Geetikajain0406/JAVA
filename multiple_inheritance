@@ -1,0 +1,21 @@
+interface text{
+    void msg();
+}
+interface call{
+    void calling();
+}
+class phone implements text,call{
+    public void msg(){
+        System.out.println("pingggg msg");
+    }
+    public void calling(){
+        System.out.println("bihari ji call uthaiye");
+    }
+}
+class Main {
+    public static void main(String[] args) {
+        phone p=new phone();
+        p.msg();
+        p.calling();
+    }
+}
