@@ -1,0 +1,46 @@
+interface Camera {
+    void takePhoto();
+}
+
+interface GPS {
+    void navigate();
+}
+
+class AndroidPhone implements Camera, GPS {
+
+    public void takePhoto() {
+        System.out.println("Android phone taking photo 📸");
+    }
+
+    public void navigate() {
+        System.out.println("Android phone navigating via Google Maps 🗺️");
+    }
+}
+
+class IPhone implements Camera, GPS {
+
+    public void takePhoto() {
+        System.out.println("iPhone taking photo 📸");
+    }
+
+    public void navigate() {
+        System.out.println("iPhone navigating via Apple Maps 🗺️");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+
+        Camera c1 = new AndroidPhone();  // interface reference -> AndroidPhone object
+        c1.takePhoto();
+
+        GPS g1 = new AndroidPhone();     // interface reference -> AndroidPhone object
+        g1.navigate();
+
+        Camera c2 = new IPhone();        // interface reference -> IPhone object
+        c2.takePhoto();
+
+        GPS g2 = new IPhone();           // interface reference -> IPhone object
+        g2.navigate();
+    }
+}
