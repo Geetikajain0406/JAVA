@@ -1,0 +1,104 @@
+import java.util.Scanner;
+
+class Menu {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.println("1 Arithmetic");
+        System.out.println("2 Even Odd");
+        System.out.println("3 Multiples");
+        System.out.println("4 Factorial");
+        System.out.println("5 Exit");
+
+        int ch = sc.nextInt();
+
+        switch (ch) {
+            case 1:
+                int a = sc.nextInt();
+                int b = sc.nextInt();
+                System.out.println(a + b);
+                System.out.println(a - b);
+                System.out.println(a * b);
+                System.out.println(a / b);
+                break;
+
+            case 2:
+                int n = sc.nextInt();
+                if (n % 2 == 0)
+                    System.out.println("Even");
+                else
+                    System.out.println("Odd");
+                break;
+
+            case 3:
+                int x = sc.nextInt();
+                for (int i = 1; i <= 10; i++)
+                    System.out.println(x * i);
+                break;
+
+            case 4:
+                int f = sc.nextInt();
+                int fact = 1;
+                for (int i = 1; i <= f; i++)
+                    fact = fact * i;
+                System.out.println(fact);
+                break;
+
+            case 5:
+                break;
+        }
+    }
+}
+
+import java.util.Scanner;
+
+class Menu {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.println("1 Arithmetic");
+        System.out.println("2 Even Odd");
+        System.out.println("3 Multiples");
+        System.out.println("4 Factorial");
+        System.out.println("5 Exit");
+
+        int ch = sc.nextInt();
+
+        switch (ch) {
+            case 1:
+                int a = sc.nextInt();
+                int b = sc.nextInt();
+                System.out.println(a + b);
+                System.out.println(a - b);
+                System.out.println(a * b);
+                System.out.println(a / b);
+                break;
+
+            case 2:
+                int n = sc.nextInt();
+                if (n % 2 == 0)
+                    System.out.println("Even");
+                else
+                    System.out.println("Odd");
+                break;
+
+            case 3:
+                int x = sc.nextInt();
+                for (int i = 1; i <= 10; i++)
+                    System.out.println(x * i);
+                break;
+
+            case 4:
+                int f = sc.nextInt();
+                int fact = 1;
+                for (int i = 1; i <= f; i++)
+                    fact = fact * i;
+                System.out.println(fact);
+                break;
+
+            case 5:
+                break;
+        }
+    }
+}
+
