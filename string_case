@@ -1,0 +1,15 @@
+import java.util.Scanner;
+public class Main{
+    public static void main(String[] args){
+        String sen="Learning Java is both fun and rewarding";
+        String[] words=sen.split(" ");
+        for(String w:words){
+            System.out.println(w);
+        }
+        System.out.println("the words len"+ words.length);
+        String replace=sen.replace("fun","challenging");
+        System.out.println("the replace sen is"+replace);
+        String upper=sen.toUpperCase();
+        System.out.println("the upper case sen is"+upper);
+    }
+}
