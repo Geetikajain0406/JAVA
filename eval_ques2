@@ -1,0 +1,46 @@
+import java.util.Scanner;
+class emp{
+    int eid;
+    String ename;
+    double sal;
+    double totalsal;
+    double hra;
+       double da;
+    emp(int e,String n,double s){
+        eid=e;
+        ename=n;
+        sal=s;
+    }
+    void calc_sal(){
+     hra=0.2 *sal;
+     da=0.1*sal;
+        totalsal=sal+hra+da;
+     
+    }
+    void display(){
+        System.out.println("the employe id  is"+eid);
+        System.out.println("the employee name is"+ename);
+        System.out.println("the employee basic salary is"+sal);
+          System.out.println("the hra is"+hra);
+        System.out.println("the da is"+da);
+        System.out.println("the total salary is"+totalsal);
+    }
+}
+
+
+public class Eval{
+    public static void main(String[] args){
+        Scanner sc=new Scanner(System.in);
+ System.out.println("enter employee id");
+ int eid=sc.nextInt();
+ sc.nextLine();
+  System.out.println("enter employee name");
+  String name=sc.nextLine();
+   sc.nextLine();
+   System.out.println("enter employee salary ");
+   int sal=sc.nextInt();
+        emp e=new emp(eid,name,sal);
+        e.calc_sal();
+        e.display();
+    }
+}
