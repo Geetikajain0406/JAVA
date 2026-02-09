@@ -1,0 +1,26 @@
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+
+        String sen = "Learning Java is both fun and rewarding";
+
+        // Split sentence into words
+        String[] words = sen.split(" ");
+
+        for (String w : words) {
+            System.out.println(w);
+        }
+
+        // Length of words array
+        System.out.println("The words length is: " + words.length);
+
+        // Replace word
+        String replace = sen.replace("fun", "challenging");
+        System.out.println("The replaced sentence is: " + replace);
+
+        // Convert to uppercase
+        String upper = sen.toUpperCase();
+        System.out.println("The uppercase sentence is: " + upper);
+    }
+}
