@@ -1,0 +1,64 @@
+import java.util.Scanner;
+
+class HotelRoom {
+    int roomNo;
+    String roomType;
+    double tariffPerDay;
+    int daysStayed;
+
+    double totalAmount;
+    double discount;
+    double gst;
+    double finalBill;
+
+    void calculateBill() {
+        totalAmount = tariffPerDay * daysStayed;
+
+        if (daysStayed > 5) {
+            discount = totalAmount * 0.10; // 10% discount
+        } else {
+            discount = 0;
+        }
+
+        double discountedAmount = totalAmount - discount;
+        gst = discountedAmount * 0.12; // 12% GST
+
+        finalBill = discountedAmount + gst;
+    }
+
+    void displayBill() {
+        System.out.println("\n------ Hotel Bill ------");
+        System.out.println("Room Number     : " + roomNo);
+        System.out.println("Room Type       : " + roomType);
+        System.out.println("Tariff per Day  : ₹" + tariffPerDay);
+        System.out.println("Days Stayed     : " + daysStayed);
+        System.out.println("Total Amount    : ₹" + totalAmount);
+        System.out.println("Discount        : ₹" + discount);
+        System.out.println("GST (12%)       : ₹" + gst);
+        System.out.println("Final Bill      : ₹" + finalBill);
+    }
+}
+
+public class Main2 {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        HotelRoom room = new HotelRoom();
+
+        System.out.print("Enter Room Number: ");
+        room.roomNo = sc.nextInt();
+
+        sc.nextLine(); // clear buffer
+        System.out.print("Enter Room Type: ");
+        room.roomType = sc.nextLine();
+
+        System.out.print("Enter Tariff per Day: ");
+        room.tariffPerDay = sc.nextDouble();
+
+        System.out.print("Enter Number of Days Stayed: ");
+        room.daysStayed = sc.nextInt();
+
+        room.calculateBill();
+        room.displayBill();
+    }
+}
