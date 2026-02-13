@@ -1,0 +1,49 @@
+import java.util.Scanner;
+
+class StudentFee {
+    int rollNo;
+    String name, course;
+    double fee, discount, finalFee;
+
+    void calculateFee() {
+        if (fee > 50000) {
+            discount = fee * 0.10;
+        } else {
+            discount = 0;
+        }
+        finalFee = fee - discount;
+    }
+
+    void display() {
+        System.out.println("\n--- Student Fee Details ---");
+        System.out.println("Roll No  : " + rollNo);
+        System.out.println("Name     : " + name);
+        System.out.println("Course   : " + course);
+        System.out.println("Fee      : ₹" + fee);
+        System.out.println("Discount : ₹" + discount);
+        System.out.println("Final Fee: ₹" + finalFee);
+    }
+}
+
+public class Main3 {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        StudentFee s = new StudentFee();
+
+        System.out.print("Enter Roll No: ");
+        s.rollNo = sc.nextInt();
+
+        sc.nextLine();
+        System.out.print("Enter Name: ");
+        s.name = sc.nextLine();
+
+        System.out.print("Enter Course: ");
+        s.course = sc.nextLine();
+
+        System.out.print("Enter Fee: ");
+        s.fee = sc.nextDouble();
+
+        s.calculateFee();
+        s.display();
+    }
+}
