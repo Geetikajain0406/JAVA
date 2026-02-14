@@ -1,0 +1,48 @@
+import java.util.Scanner;
+
+class MovieTicket {
+    String customerName;
+    int tickets;
+    double total, discount, gst, finalBill;
+
+    void calculate() {
+        total = tickets * 200;
+
+        if (tickets > 5) {
+            discount = total * 0.10;
+        } else {
+            discount = 0;
+        }
+
+        double discountedAmount = total - discount;
+        gst = discountedAmount * 0.18;
+
+        finalBill = discountedAmount + gst;
+    }
+
+    void display() {
+        System.out.println("\n--- Movie Ticket Bill ---");
+        System.out.println("Customer Name : " + customerName);
+        System.out.println("Tickets       : " + tickets);
+        System.out.println("Total Amount  : ₹" + total);
+        System.out.println("Discount      : ₹" + discount);
+        System.out.println("GST           : ₹" + gst);
+        System.out.println("Final Bill    : ₹" + finalBill);
+    }
+}
+
+public class Main6 {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        MovieTicket m = new MovieTicket();
+
+        System.out.print("Enter Customer Name: ");
+        m.customerName = sc.nextLine();
+
+        System.out.print("Enter Number of Tickets: ");
+        m.tickets = sc.nextInt();
+
+        m.calculate();
+        m.display();
+    }
+}
