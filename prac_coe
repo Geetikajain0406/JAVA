@@ -1,0 +1,29 @@
+class abc{
+    int a;
+    abc(int ab){
+        a=ab;
+    }
+    void dis(){
+        System.out.println(a);
+    }
+}
+class bcd extends abc{
+    int b;
+    bcd(int a,int bc){
+        super(a);
+        b=bc;
+    }
+    @Override
+    void dis(){
+        super.dis();
+        System.out.println(b);
+    }
+}
+class Main {
+    public static void main(String[] args) {
+       abc a=new abc(2);
+       a.dis();
+       bcd b=new bcd(4,3);
+       b.dis();
+    }
+}
