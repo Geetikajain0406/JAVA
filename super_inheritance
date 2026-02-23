@@ -1,0 +1,33 @@
+import java.util.Scanner;
+class acc{
+    int acno;
+    acc(int ac){
+        acno=ac;
+    }
+    void display(){
+        System.out.println("the account number is:"+acno);
+    }
+
+
+}
+class saving extends acc{
+    int bal=0;
+
+
+    saving(int a,int b){
+        super(a);
+        bal+=b;
+    }
+    void dis(){
+        super.display();
+         System.out.println("the balance is:"+bal);
+    }
+}
+
+
+public class Main{
+    public static void main(String [] args){
+        saving s=new saving(123,40000);
+        s.dis();
+    }
+}
