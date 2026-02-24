@@ -1,0 +1,19 @@
+class Manager extends Employee 
+        implements BonusEligible, TaxPayer {
+
+    Manager(String name, double salary) {
+        super(name, salary);
+    }
+
+    double calculateSalary() {
+        return salary;   // direct return
+    }
+
+    public double calculateBonus() {
+        return salary * 0.20;
+    }
+
+    public double calculateTax() {
+        return salary * 0.10;
+    }
+}
