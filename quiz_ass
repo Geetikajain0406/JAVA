@@ -1,0 +1,59 @@
+
+interface bonus{
+   double calcbon();
+}
+interface tax{
+    double calctax();
+}
+abstract class emp{
+    String name;
+    double sal;
+    emp(String name,double sal){
+        this.name=name;
+        this.sal=sal;
+    }
+    abstract double calcsal();
+    void display(){
+       System.out.println("The name: " + name + " The salary is: " + sal);
+    }
+}
+class manager extends emp implements bonus,tax{
+    manager(String n,double s){
+        super(n,s);
+    }
+    @Override
+    double calcsal(){
+        return sal;
+    }
+    public double calcbon(){
+    return sal*0.20;
+    }
+    public double calctax(){
+    return sal*0.10;
+    }
+}
+class dev extends emp implements bonus,tax{
+   dev(String n,double s){
+        super(n,s);
+    }
+    @Override
+    double calcsal(){
+        return sal;
+    }
+    public double calcbon(){
+    return sal*0.20;
+    }
+    public double calctax(){
+    return sal*0.10;
+    }
+}
+class Main{
+    public static void main(String[] args){
+      emp e1=new manager("geet",50000);
+        emp e2=new dev("geetika",900000);
+        e1.display();
+        System.out.println("the manager sal is "+e1.calcsal());
+        e2.display();
+        System.out.println("the dev sal is "+e2.calcsal());
+    }
+}
