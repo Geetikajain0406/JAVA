@@ -1,0 +1,39 @@
+import java.util.Scanner;
+class emp{
+ protected int empid;
+ protected String name;
+ protected double basicsal;
+ emp(int eid,String n,double sal){
+ empid=eid;
+ name=n;
+ basicsal=sal;
+ }
+ 
+}
+class manager extends emp{
+ double hra;
+ double da;
+ manager(int e,String n,double sal,double h,double d){
+ super(e,n,sal);
+ hra=h;
+ da=d;
+ }
+ void calcsal(){
+ double totalsal=basicsal+hra+da;
+ System.out.println("the employee details are:");
+ System.out.println("the employee id is :"+empid);
+ System.out.println("the employee name is :"+name);
+ System.out.println("the employee total salary is :"+totalsal);
+ }
+}
+public class Eval{
+ public static void main(String [] args){
+ Scanner sc=new Scanner(System.in);
+ System.out.println("enter employee name");
+ String name=sc.nextLine();
+ sc.nextLine();
+ System.out.println("enter employee id");
+ int eid=sc.nextInt();
+ System.out.println("enter employee basic salary");
+ double sal=sc.nextDouble();
+ System.out.println("enter employee hra");
