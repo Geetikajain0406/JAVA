@@ -1,0 +1,63 @@
+interface Payable {
+    double calculatePay();
+}
+
+abstract class Staff {
+    String name;
+
+    Staff(String name) {
+        this.name = name;
+    }
+
+    abstract String getRole();
+
+    void showName() {
+        System.out.println("Name: " + name);
+    }
+}
+
+class Teacher extends Staff implements Payable {
+    int lectures;
+    double rate = 500;
+
+    Teacher(String name, int lectures) {
+        super(name);
+        this.lectures = lectures;
+    }
+
+    public double calculatePay() {
+        return lectures * rate;
+    }
+
+    String getRole() {
+        return "Teacher";
+    }
+}
+
+class Clerk extends Staff implements Payable {
+    double salary;
+
+    Clerk(String name, double salary) {
+        super(name);
+        this.salary = salary;
+    }
+
+    public double calculatePay() {
+        return salary;
+    }
+
+    String getRole() {
+        return "Clerk";
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+
+        Staff p1 = new Teacher("Rahul", 10);
+        Staff p2 = new Clerk("Aman", 15000);
+
+        System.out.println("Pay: " + ((Payable)p1).calculatePay());
+        System.out.println("Pay: " + ((Payable)p2).calculatePay());
+    }
+}
