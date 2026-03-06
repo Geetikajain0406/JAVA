@@ -1,0 +1,22 @@
+class acc{
+    int acno;
+    acc(int acno){
+        this.acno=acno;
+    }
+}
+class saving extends acc{
+    int bal;
+    saving(int b,int a){
+        super(a);
+        bal=b;
+    }
+    saving(int b){
+        bal+=b;
+    }
+}
+class Main {
+    public static void main(String[] args) {
+        Scanner sc=new Scanner (System.in);
+        System.out.println("");
+    }
+}
