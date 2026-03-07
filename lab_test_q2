@@ -1,0 +1,38 @@
+         System.out.println("the student roll number -:"+ rollno );
+          System.out.println("the student is passed with distinction ");
+    }
+    else if(per>=60 && per <74){
+        System.out.println("the student name -:"+ name );
+         System.out.println("the student roll number -:"+ rollno );
+          System.out.println("the student is passed with first class");
+    }
+    else if(per>=50 && per <59){
+       System.out.println("the student name -:"+ name );
+         System.out.println("the student roll number -:"+ rollno );
+          System.out.println("the student is passed with second class");
+    }
+    else {
+       System.out.println("the student name -:"+ name );
+         System.out.println("the student roll number -:"+ rollno );
+          System.out.println("the student is failed ");
+    }
+   }
+}
+
+
+public class Main{
+    public static void main(String[] args){
+        Scanner sc=new Scanner(System.in);
+        System.out.println("Enter the student name");
+        String name=sc.nextLine();
+        sc.nextLine();
+        System.out.println("Enter the student roll number");
+        int rollno=sc.nextInt();
+        System.out.println("Enter the student 3 marks");
+        double m1=sc.nextDouble();
+        double m2=sc.nextDouble();
+        double m3=sc.nextDouble();
+     stud s1=new stud(rollno,name,m1,m2,m3);
+     s1.calc();
+    }
+}
