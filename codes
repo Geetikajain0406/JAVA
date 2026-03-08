@@ -1,0 +1,61 @@
+// Superclass
+class Account {
+    int accountNumber;
+    double balance;
+
+    // Constructor
+    Account(int accNo, double bal) {
+        accountNumber = accNo;
+        balance = bal;
+    }
+
+    void displayAccount() {
+        System.out.println("Account Number: " + accountNumber);
+        System.out.println("Balance: ₹" + balance);
+    }
+}
+
+// Subclass
+class SavingsAccount extends Account {
+    double interestRate;
+
+    // Constructor
+    SavingsAccount(int accNo, double bal, double rate) {
+        super(accNo, bal);
+        interestRate = rate;
+    }
+
+    void displaySavings() {
+        displayAccount();
+        System.out.println("Interest Rate: " + interestRate + "%");
+    }
+}
+
+// Subclass (Multilevel Inheritance)
+class PremiumSavingsAccount extends SavingsAccount {
+
+    // Constructor
+    PremiumSavingsAccount(int accNo, double bal, double rate) {
+        super(accNo, bal, rate);
+    }
+
+    // Calculate interest
+    void calculateInterest() {
+        double interest = balance * 0.05;
+        balance += interest;
+    }
+
+    void displayFinalDetails() {
+        calculateInterest();
+        displaySavings();
+        System.out.println("Final Balance after Interest: ₹" + balance);
+    }
+
+    // Main Method
+    public static void main(String[] args) {
+        PremiumSavingsAccount p1 =
+                new PremiumSavingsAccount(5001, 20000, 5);
+
+        p1.displayFinalDetails();
+    }
+}
