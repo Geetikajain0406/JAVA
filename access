@@ -1,0 +1,12 @@
+class Student {
+    private int marks = 90;
+
+    private void display() {
+        System.out.println("Marks: " + marks);
+    }
+
+    public static void main(String[] args) {
+        Student s = new Student();
+        s.display();   // allowed (same class)
+    }
+}
