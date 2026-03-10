@@ -1,0 +1,7 @@
+public class Employee {
+    public String name = "Rahul";
+
+    public void display() {
+        System.out.println(name);
+    }
+}
