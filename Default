@@ -1,0 +1,7 @@
+class Teacher {
+    int salary = 30000;   // default access
+
+    void show() {
+        System.out.println("Salary: " + salary);
+    }
+}
