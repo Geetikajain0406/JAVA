@@ -1,0 +1,44 @@
+interface payment{
+    void pay(double amount);
+}
+class creditcard implements payment{
+    int pin;
+    creditcard(int pin){
+        this.pin=pin;
+    }
+    @Override
+    public void pay(double amount){
+        System.out.println("the amount is:"+amount +"the credit card pin is:"+pin);
+    }
+}
+class paypal implements payment{
+   String email;
+    paypal(String email){
+        this.email=email;
+    }
+    @Override
+    public void pay(double amount){
+        System.out.println("the amount is:"+amount +"the paypal email is:"+email);
+    }
+}
+class bitcoin implements payment{
+    String wallet;
+    bitcoin(String wallet){
+        this.wallet=wallet;
+    }
+    @Override
+    public void pay(double amount){
+        System.out.println("the amount is:"+amount +"the bitcoin wallet  is:"+wallet);
+    }
+}
+public class Main{
+    public static void main(String[] args){
+        payment p1=new creditcard(1234);
+        payment p2=new paypal("@gmai.com");
+        payment p3=new bitcoin("example");
+        p1.pay(10000);
+        p2.pay(2000);
+        p3.pay(4000);
+       
+    }
+}
