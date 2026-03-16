@@ -1,0 +1,33 @@
+class emp{
+    String name;
+    emp(String n){
+        name=n;
+    }
+   void calcsal(){
+        System.out.println("the salary is: 0");
+    }
+}
+class fulltime extends emp{
+    double sal;
+    fulltime(double s,String n){
+        super(n);
+        sal=s;
+    }
+    @Override
+    void calcsal(){
+        System.out.println("the salary is:"+sal);
+    }
+}
+class parttime extends emp{
+    double rate;
+    int hours;
+    parttime(String n,double r,int h){
+        super(n);
+        hours=h;
+        rate=r;
+    }
+     @Override
+   void calcsal(){
+        System.out.println("the salary is:"+hours*rate);
+    }
+}
