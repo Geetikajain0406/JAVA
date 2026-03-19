@@ -1,0 +1,24 @@
+enum Signal {
+    RED, YELLOW, GREEN
+}
+
+public class Main {
+    public static void main(String[] args) {
+        
+        Signal s = Signal.RED;
+
+        switch(s) {
+            case RED:
+                System.out.println("STOP");
+                break;
+
+            case YELLOW:
+                System.out.println("READY");
+                break;
+
+            case GREEN:
+                System.out.println("GO");
+                break;
+        }
+    }
+}
