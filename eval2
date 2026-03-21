@@ -1,0 +1,45 @@
+package food;
+public class temp{
+    public void main(String[] args){
+interface payment{
+    void pay(double amt);
+    void show();
+}
+class cod implements payment{
+String name;
+cod(String name){
+    this.name=name;
+}
+    @Override
+    public void pay(double amt){
+        System.out.println("The amount of cod is"+amt);
+    }
+     @Override
+    public void show(){
+        System.out.println("The owner name for upi  is"+name);
+    }
+
+
+}
+class upi implements payment{
+String id;
+upi(String id){
+    this.id=id;
+}
+    @Override
+    public void pay(double amt){
+        System.out.println("The amount of upi is"+amt);
+    }
+     @Override
+    public void show(){
+        System.out.println("The owner pin for upi is"+id);
+    }
+
+
+}
+    }
+}
+
+
+
+
