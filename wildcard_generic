@@ -1,0 +1,27 @@
+import java.util.*;
+
+public class Main {
+
+    public static void printNumbers(List<? extends Number> list) {
+        for (Object n : list) {
+            System.out.println(n);
+        }
+    }
+
+    public static void main(String[] args) {
+
+        List<Integer> l1 = new ArrayList<>();
+        l1.add(10);
+        l1.add(20);
+
+        List<Double> l2 = new ArrayList<>();
+        l2.add(5.5);
+        l2.add(10.5);
+
+        System.out.println("Integer List:");
+        printNumbers(l1);
+
+        System.out.println("Double List:");
+        printNumbers(l2);
+    }
+}
