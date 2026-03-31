@@ -1,0 +1,19 @@
+import java.util.Scanner;
+
+enum Day {
+    MON, TUE, WED
+}
+
+class Test {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        String input = sc.next();
+
+        Day d = Day.valueOf(input);  // dynamic
+
+        if(d == Day.MON)
+            System.out.println("Office jana hai 😭");
+        else
+            System.out.println("Chill 😎");
+    }
+}
