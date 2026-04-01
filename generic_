@@ -1,0 +1,19 @@
+import java.util.*;
+
+class Demo {
+    static void addDogs(List<? super Dog> list) {
+        list.add(new Dog()); // ✅ allowed
+        list.add(new Dog());
+    }
+
+    public static void main(String[] args) {
+        List<Animal> animals = new ArrayList<>();
+        List<Object> objs = new ArrayList<>();
+
+        addDogs(animals);
+        addDogs(objs);
+
+        System.out.println(animals);
+        System.out.println(objs);
+    }
+}
