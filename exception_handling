@@ -1,0 +1,32 @@
+class LicenseNotEligibleException extends Exception {
+    LicenseNotEligibleException(String msg) {
+        super(msg);
+    }
+}
+
+class Person {
+    int age;
+
+    Person(int age) {
+        this.age = age;
+    }
+
+    void applyForLicense() throws LicenseNotEligibleException {
+        if (age < 18) {
+            throw new LicenseNotEligibleException("Not eligible for license");
+        } else {
+            System.out.println("License approved");
+        }
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        try {
+            Person p = new Person(16);
+            p.applyForLicense();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+    }
+}
