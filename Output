@@ -1,0 +1,11 @@
+Main
+ ↓
+applyForLicense()
+ ↓
+age < 18 → TRUE
+ ↓
+Exception throw
+ ↓
+catch block
+ ↓
+print message
