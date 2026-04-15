@@ -1,0 +1,23 @@
+import java.util.*;
+class Main {
+    public static void main(String[] args) {
+        Scanner sc=new Scanner(System.in);
+        int [] arr=new int[5];
+        System.out.println("enter array element ");
+        for(int i=0;i<arr.length;i++){
+            arr[i]=sc.nextInt();
+        }
+        System.out.println("*********************** ");
+        char [] arr1=new char[5];
+        System.out.println("enter array char element ");
+        for(int i=0;i<5;i++){
+            arr1[i]=sc.next().charAt(0);
+        }
+        System.out.println("*********************** ");
+        System.out.println("printing it char arr ");
+        for(char c:arr1){
+            System.out.println(c);
+        }
+        System.out.println("*********************** ");
+    }
+}
