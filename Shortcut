@@ -1,0 +1,6 @@
+for(int[] row : arr) {
+    for(int val : row) {
+        System.out.print(val + " ");
+    }
+    System.out.println();
+}
