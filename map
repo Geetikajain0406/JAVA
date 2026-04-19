@@ -1,0 +1,12 @@
+import java.util.*;
+class Main {
+    public static void main(String[] args) {
+      
+        Map<String,String> m=new TreeMap<>();
+        m.put("apple","red");
+        m.put("banana","yellow");
+        for(String key:m.keySet()){
+            System.out.println(m.get(key));
+        }
+    }
+}
