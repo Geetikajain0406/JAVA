@@ -1,0 +1,61 @@
+class data{
+    int val;
+    boolean flag=false;
+    synchronized void produce(int v){
+        if(flag){
+            try{
+                wait();
+            }
+            catch(Exception e){
+            }
+            }
+            val=v;
+            System.out.println("produced:"+val);
+            flag=true;
+            notify();
+        
+        
+    }
+    synchronized void consume(){
+        if(!flag){
+            try{
+                wait();
+            }
+            catch(Exception e){
+            }
+            }
+          
+            System.out.println("consumed:"+val);
+            flag=false;
+            notify();
+        
+        
+    }
+}
+class prod extends Thread{
+    data d;
+    prod(data d){
+        this.d=d;
+    }
+    public void run(){
+        d.produce(100);
+    }
+}
+class con extends Thread{
+    data d;
+    con(data d){
+        this.d=d;
+    }
+    public void run(){
+        d.consume();
+    }
+}
+class Main {
+    public static void main(String[] args) {
+        data d =new data();
+        prod p=new prod(d);
+        con c=new con(d);
+        p.start();
+        c.start();
+    }
+}
