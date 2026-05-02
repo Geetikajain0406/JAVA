@@ -1,0 +1,43 @@
+import java.util.*;
+import java.util.Random;
+import java.util.Vector;
+
+class task implements Runnable {
+
+    Vector<String> v;
+
+    task(Vector<String> s) {
+        v = s;
+    }
+
+    public void run() {
+        Random r = new Random();
+        try {
+            for (int i = 1; i <= 3; i++) {
+                String output = Thread.currentThread().getName() + "is running ";
+                System.out.println(output);
+                v.add(output);
+                Thread.sleep((r.nextInt(3) + 1) * 1000);
+            }
+        }
+            catch(Exception e){
+            System.out.println(e);
+        
+        }
+    }
+
+}
+
+public class Main {
+
+    public static void main(String[] args) {
+        Vector<String> v = new Vector<>();
+        task t = new task(v);
+        Thread t1 = new Thread(t, "thread 1");
+        Thread t2 = new Thread(t, "thread 2");
+        Thread t3 = new Thread(t, "thread 3");
+        t1.start();
+        t2.start();
+        t3.start();
+    }
+}
