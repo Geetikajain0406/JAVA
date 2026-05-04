@@ -1,0 +1,64 @@
+class number{
+    int n;
+    int turn =1;//1=odd,0=even
+    number(int num){
+        n=num;
+    }
+    synchronized void printeven(){
+        for(int i=2;i<=n;i+=2){
+            while(turn==1){
+                try{
+                    wait();
+                }
+                catch(Exception e){
+                }
+            }
+            System.out.println("the number even is:"+i);
+            turn=1;
+            notify();
+        }
+    }
+    synchronized void printodd(){
+        for(int i=1;i<=n;i+=2){
+            while(turn==0){
+                try{
+                    wait();
+                }
+                catch(Exception e){
+                }
+            }
+            System.out.println("the number odd is:"+i);
+            turn=0;
+            notify();
+        }
+    }
+}
+class odd implements Runnable{
+    number n;
+    odd(number num){
+        n=num;
+    }
+    public void run(){
+        n.printodd();
+    }
+}
+class even implements Runnable{
+    number n;
+    even(number num){
+        n=num;
+    }
+    public void run(){
+        n.printeven();
+    }
+}
+
+class Main {
+    public static void main(String[] args) {
+        number n=new number(10);
+      even e=new even(n);
+      odd o=new odd(n);
+        Thread t1=new Thread(e);
+        Thread t2=new Thread(o);
+      t1.start();
+      t2.start();
+    }
