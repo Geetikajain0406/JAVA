@@ -1,0 +1,36 @@
+class account{
+    int b;
+    
+    account(int bal){
+        b=bal;
+    }
+    synchronized void deposit(int amt){
+        b=b+amt;
+        System.out.println("the amount after add is"+b);
+      
+       
+    }
+}
+class add implements Runnable{
+    account a;
+    int amt;
+    add(account ad,int c){
+        a=ad;
+        amt=c;
+    }
+    public void run(){
+        a.deposit(amt);
+    }
+}
+public class Main{
+    public static void main(String[] args){
+        account a=new account(1000);
+        add a1=new add(a,1000);
+        add a2=new add(a,2000);
+        Thread t1=new Thread(a1);
+          Thread t2=new Thread(a2);
+          t1.start();
+          t2.start();
+          
+    }
+}
