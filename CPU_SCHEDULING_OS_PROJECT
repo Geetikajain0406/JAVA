@@ -1,0 +1,421 @@
+import java.util.*;
+
+public class Main {
+
+    static void display(int n, int process[], int at[],
+                        int bt[], int ct[],
+                        int wt[], int tat[]) {
+
+        double totalWt = 0;
+        double totalTat = 0;
+
+        System.out.println("\nprocess\tat\tbt\tct\twt\ttat");
+
+        for (int i = 0; i < n; i++) {
+
+            System.out.println("p" + process[i] + "\t"
+                    + at[i] + "\t"
+                    + bt[i] + "\t"
+                    + ct[i] + "\t"
+                    + wt[i] + "\t"
+                    + tat[i]);
+
+            totalWt += wt[i];
+            totalTat += tat[i];
+        }
+
+        System.out.println("\naverage waiting time: " + (totalWt / n));
+        System.out.println("average turnaround time: " + (totalTat / n));
+    }
+
+    static void ganttChart(int n, int process[]) {
+
+        System.out.println("\ngantt chart:\n");
+
+        System.out.print(" ");
+
+        for (int i = 0; i < n; i++) {
+            System.out.print("------");
+        }
+
+        System.out.println();
+
+        System.out.print("|");
+
+        for (int i = 0; i < n; i++) {
+            System.out.print(" p" + process[i] + " |");
+        }
+
+        System.out.println();
+
+        System.out.print(" ");
+
+        for (int i = 0; i < n; i++) {
+            System.out.print("------");
+        }
+
+        System.out.println("\n");
+    }
+
+    static double fcfs(int n, int process[],
+                       int at[], int bt[]) {
+
+        int wt[] = new int[n];
+        int tat[] = new int[n];
+        int ct[] = new int[n];
+
+        System.out.println("\n========== fcfs scheduling ==========");
+
+        ganttChart(n, process);
+
+        ct[0] = at[0] + bt[0];
+
+        for (int i = 1; i < n; i++) {
+
+            if (ct[i - 1] < at[i]) {
+
+                ct[i] = at[i] + bt[i];
+
+            } else {
+
+                ct[i] = ct[i - 1] + bt[i];
+            }
+        }
+
+        for (int i = 0; i < n; i++) {
+
+            tat[i] = ct[i] - at[i];
+
+            wt[i] = tat[i] - bt[i];
+        }
+
+        display(n, process, at, bt, ct, wt, tat);
+
+        double total = 0;
+
+        for (int i = 0; i < n; i++) {
+            total += wt[i];
+        }
+
+        return total / n;
+    }
+
+    static double sjf(int n, int process[],
+                      int at[], int bt[]) {
+
+        int wt[] = new int[n];
+        int tat[] = new int[n];
+        int ct[] = new int[n];
+
+        for (int i = 0; i < n - 1; i++) {
+
+            for (int j = 0; j < n - i - 1; j++) {
+
+                if (bt[j] > bt[j + 1]) {
+
+                    int temp = bt[j];
+                    bt[j] = bt[j + 1];
+                    bt[j + 1] = temp;
+
+                    int tempAt = at[j];
+                    at[j] = at[j + 1];
+                    at[j + 1] = tempAt;
+
+                    int tempP = process[j];
+                    process[j] = process[j + 1];
+                    process[j + 1] = tempP;
+                }
+            }
+        }
+
+        System.out.println("\n========== sjf scheduling ==========");
+
+        ganttChart(n, process);
+
+        ct[0] = at[0] + bt[0];
+
+        for (int i = 1; i < n; i++) {
+
+            if (ct[i - 1] < at[i]) {
+
+                ct[i] = at[i] + bt[i];
+
+            } else {
+
+                ct[i] = ct[i - 1] + bt[i];
+            }
+        }
+
+        for (int i = 0; i < n; i++) {
+
+            tat[i] = ct[i] - at[i];
+
+            wt[i] = tat[i] - bt[i];
+        }
+
+        display(n, process, at, bt, ct, wt, tat);
+
+        double total = 0;
+
+        for (int i = 0; i < n; i++) {
+            total += wt[i];
+        }
+
+        return total / n;
+    }
+
+    static double priority(int n, int process[],
+                           int at[], int bt[],
+                           int priority[]) {
+
+        int wt[] = new int[n];
+        int tat[] = new int[n];
+        int ct[] = new int[n];
+
+        for (int i = 0; i < n - 1; i++) {
+
+            for (int j = 0; j < n - i - 1; j++) {
+
+                if (priority[j] > priority[j + 1]) {
+
+                    int tempPr = priority[j];
+                    priority[j] = priority[j + 1];
+                    priority[j + 1] = tempPr;
+
+                    int tempBt = bt[j];
+                    bt[j] = bt[j + 1];
+                    bt[j + 1] = tempBt;
+
+                    int tempAt = at[j];
+                    at[j] = at[j + 1];
+                    at[j + 1] = tempAt;
+
+                    int tempP = process[j];
+                    process[j] = process[j + 1];
+                    process[j + 1] = tempP;
+                }
+            }
+        }
+
+        System.out.println("\n========== priority scheduling ==========");
+
+        ganttChart(n, process);
+
+        ct[0] = at[0] + bt[0];
+
+        for (int i = 1; i < n; i++) {
+
+            if (ct[i - 1] < at[i]) {
+
+                ct[i] = at[i] + bt[i];
+
+            } else {
+
+                ct[i] = ct[i - 1] + bt[i];
+            }
+        }
+
+        for (int i = 0; i < n; i++) {
+
+            tat[i] = ct[i] - at[i];
+
+            wt[i] = tat[i] - bt[i];
+        }
+
+        display(n, process, at, bt, ct, wt, tat);
+
+        double total = 0;
+
+        for (int i = 0; i < n; i++) {
+            total += wt[i];
+        }
+
+        return total / n;
+    }
+
+    static double roundRobin(int n, int process[],
+                             int at[], int bt[],
+                             int quantum) {
+
+        int remBt[] = Arrays.copyOf(bt, n);
+
+        int wt[] = new int[n];
+        int tat[] = new int[n];
+        int ct[] = new int[n];
+
+        int time = 0;
+
+        System.out.println("\n========== round robin scheduling ==========");
+
+        System.out.println("\ngantt chart:\n");
+
+        System.out.print("|");
+
+        while (true) {
+
+            boolean completed = true;
+
+            for (int i = 0; i < n; i++) {
+
+                if (remBt[i] > 0) {
+
+                    completed = false;
+
+                    System.out.print(" p" + process[i] + " |");
+
+                    if (remBt[i] > quantum) {
+
+                        time += quantum;
+                        remBt[i] -= quantum;
+
+                    } else {
+
+                        time += remBt[i];
+
+                        ct[i] = time;
+
+                        remBt[i] = 0;
+                    }
+                }
+            }
+
+            if (completed) {
+                break;
+            }
+        }
+
+        System.out.println();
+
+        for (int i = 0; i < n; i++) {
+
+            tat[i] = ct[i] - at[i];
+
+            wt[i] = tat[i] - bt[i];
+        }
+
+        display(n, process, at, bt, ct, wt, tat);
+
+        double total = 0;
+
+        for (int i = 0; i < n; i++) {
+            total += wt[i];
+        }
+
+        return total / n;
+    }
+
+    public static void main(String[] args) {
+
+        Scanner sc = new Scanner(System.in);
+
+        System.out.println("========== cpu scheduling simulator ==========\n");
+
+        System.out.print("enter number of processes: ");
+        int n = sc.nextInt();
+
+        int process[] = new int[n];
+        int at[] = new int[n];
+        int bt[] = new int[n];
+        int priority[] = new int[n];
+
+        for (int i = 0; i < n; i++) {
+
+            process[i] = i + 1;
+
+            System.out.print("\nenter arrival time for p" + process[i] + ": ");
+            at[i] = sc.nextInt();
+
+            System.out.print("enter burst time for p" + process[i] + ": ");
+            bt[i] = sc.nextInt();
+
+            System.out.print("enter priority for p" + process[i] + ": ");
+            priority[i] = sc.nextInt();
+        }
+
+        System.out.println("\nchoose algorithm:");
+        System.out.println("1. fcfs");
+        System.out.println("2. sjf");
+        System.out.println("3. priority scheduling");
+        System.out.println("4. round robin");
+        System.out.println("5. compare all");
+
+        System.out.print("\nenter choice: ");
+
+        int choice = sc.nextInt();
+
+        switch (choice) {
+
+            case 1:
+
+                fcfs(n, process.clone(),
+                        at.clone(), bt.clone());
+
+                break;
+
+            case 2:
+
+                sjf(n, process.clone(),
+                        at.clone(), bt.clone());
+
+                break;
+
+            case 3:
+
+                priority(n, process.clone(),
+                        at.clone(), bt.clone(),
+                        priority.clone());
+
+                break;
+
+            case 4:
+
+                System.out.print("enter time quantum: ");
+                int q = sc.nextInt();
+
+                roundRobin(n, process.clone(),
+                        at.clone(), bt.clone(), q);
+
+                break;
+
+            case 5:
+
+                double fcfsAvg = fcfs(n, process.clone(),
+                        at.clone(), bt.clone());
+
+                double sjfAvg = sjf(n, process.clone(),
+                        at.clone(), bt.clone());
+
+                double priorityAvg = priority(n,
+                        process.clone(),
+                        at.clone(),
+                        bt.clone(),
+                        priority.clone());
+
+                System.out.print("\nenter time quantum: ");
+                int quantum = sc.nextInt();
+
+                double rrAvg = roundRobin(n,
+                        process.clone(),
+                        at.clone(),
+                        bt.clone(),
+                        quantum);
+
+                System.out.println("\n========== comparison table ==========\n");
+
+                System.out.println("algorithm\taverage wt");
+
+                System.out.println("fcfs\t\t" + fcfsAvg);
+                System.out.println("sjf\t\t" + sjfAvg);
+                System.out.println("priority\t" + priorityAvg);
+                System.out.println("round robin\t" + rrAvg);
+
+                break;
+
+            default:
+
+                System.out.println("invalid choice!");
+        }
+
+        sc.close();
+    }
+}
