@@ -1,0 +1,41 @@
+import java.sql.*;
+public class doc{
+     public static void main(String[] args) {
+    Connection con=null;
+    Statement st=null;
+    try{
+        Class.forName("url");
+        con=DriverManager.getConnection("url","root","pass");
+        st=con.createStatement();
+        st.executeUpdate("CREATE DATABASE IF NOT EXISTS db1");
+        st.executeUpdate("USE db1");
+        st.executeUpdate("CREATE TABLE IF NOT EXISTS stud (name VARCHAR(50),sid INT PRIMARY KEY)");
+        st.executeUpdate("INSERT INTO stud VALUES('geet',1)");
+        st.executeUpdate("INSERT INTO stud VALUES('geetika',2)");
+        ResultSet rst=st.executeQuery("SELECT * FROM stud WHERE name='geet'");
+        while(rst.next()){
+            System.out.println(rst.getString("name")+" "+
+            rst.getInt("sid"));
+        }
+        PreparedStatement pst=con.prepareStatement("UPDATE stud set name=? WHERE sid =?");
+        pst.setString(1,"geetzz");
+        pst.setInt(2,1);
+        pst.executeUpdate();
+        
+        PreparedStatement pst1=con.prepareStatement("DELETE FROM stud WHERE sid=?");
+        pst1.setInt(1,2);
+        pst1.executeUpdate();
+        pst1.close();
+        pst.close();
+        con.close();
+        st.close();
+        
+    }
+    catch(SQLException e){
+        e.printStackTrace();
+    }
+    catch(Exception ex){
+        ex.printStackTrace();
+    }
+}
+}
