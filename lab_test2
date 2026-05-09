@@ -1,0 +1,138 @@
+import java.util.*;
+class doc {
+  Vector<String> v;
+  doc(Vector<String> vec){
+    v=vec;
+  }
+  synchronized void oddprint(){
+    for(int i=1;i<=3;i++){
+       
+      if(i%2!=0){
+        String output="ODD";
+        String thread=Thread.currentThread().getName()+" -"+output;
+        System.out.println(thread);
+        v.add(thread);
+        Thread.sleep(new Random.nextInt(2)*1000);
+     
+      }
+    }
+  }
+  synchronized void evenprint(){
+    for(int i=1;i<=3;i++){
+      if(i%2==0){
+        String output="Even";
+        String thread=Thread.currentThread().getName()+" -"+output;
+        System.out.println(thread);
+        v.add(thread);
+        Thread.sleep(new Random.nextInt(2)*1000);
+      }
+    }
+  }
+
+
+}
+class even implements Runnable{
+  doc d;
+  even(doc de){
+    d=de;
+  }
+  public void run(){
+    d.evenprint();
+  }
+}
+class odd implements Runnable{
+  doc d;
+  odd(doc de){
+    d=de;
+  }
+  public void run(){
+    d.oddprint();
+  }
+}
+class Main{
+  public static void main(String[] args) {
+      Vector <String> v=new Vector<>();
+      doc d=new doc(v);
+      even e =new even(d);
+      odd o=new odd(d);
+      Thread t1 = new Thread("thread-1");
+      Thread t2 = new Thread("thread-2");
+      Thread t3 = new Thread("thread-3");
+      t1.start();
+      t2.start();
+      t3.start();
+  }
+}
+
+
+
+Q2
+import java.sql.*;
+import java.util.*;
+class ques{
+    public static void main(String[] args){
+        Connection con=null;
+    Statement st=null;
+        Scanner sc =new Scanner(System.in);
+        int acc=sc.nextInt();
+        double amount=sc.nextDouble();
+        try{
+        Class.forName("com.mysql.cd.jdbc.DriverManager");
+        System.out.println("connecting to mysql");
+        con=DriverManager.getConnection("jdbc.//localhost./3306/db1","root","jiit");
+        System.out.println("connection successfull");
+        st=con.createStatement();
+        st.executeUpdate("CREATE DATABASE IF NOT EXIST db1");
+        System.out.println("Database created");
+        st.executeUpdate("USE db1");
+        st.executeUpdate("CREATE TABLE IF NOT EXIST acc(acno INT,amt DOUBLE) ");
+        System.out.println("table created ");
+        st.executeUpdate("INSERT INTO acc VALUES(1234,30000)");
+        st.executeUpdate("INSERT INTO acc VALUES(5678,5000)");
+        System.out.println("table values entered");
+        PreparedStatement pst=con.prepareStatement("UPDATE acc SET amt=? WHERE   acno=?");
+        pst.setInt(1,acc);
+        pst.setDouble(2,amount);
+        pst.executeUpdate();
+        System.out.println("updation done in table");
+        pst.close();
+        con.close();
+        st.close();
+        }
+catch(SQLException e){
+    e.printStackTrace();
+}
+catch(Exception ex){
+    ex.printStackTrace();
+}
+
+
+    }
+}
+
+ques 
+1. Develop a Java program that creates three threads. Each thread prints its thread number
+and whether the current iteration is EVEN or ODD (based on loop count). Each thread
+should run 3 times and sleep for a random time between 1 and 2 seconds. Store
+messages in a shared Vector. (CBAC255.3, 10 Marks)
+Sample Input:
+No input required
+Sample Output (order may vary due to threading):
+Thread 1 - ODD
+Thread 2 - ODD
+Thread 3 - ODD
+Thread 1 - EVEN
+Thread 2 - EVEN
+Thread 3 - EVEN
+Thread 1 - ODD
+Thread 2 - ODD
+Thread 3 - ODD
+2. Write a JDBC program that updates account balance after deposit using Account
+Number. Handle SQL exceptions (CBAC255.4, 10 Marks)
+Sample Input
+Enter Account Number: 12345
+Enter Deposit Amount: 5000
+Sample Output (Success)
+Amount deposited successfully.
+Sample Output (Exception)
+Error: Invalid account number. each ques was of 10 marks tu teacher hota kitne deta merko?
