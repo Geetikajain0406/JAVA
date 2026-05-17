@@ -1,0 +1,14 @@
+// BINARY PADHNA
+InputStream inputStream = new FileInputStream("data.bin");
+int data;
+while ((data = inputStream.read()) != -1) {
+// read() ek byte return karta hai (0 to 255)
+// -1 matlab file khatam — null nahi, MINUS ONE
+    // process karo
+}
+inputStream.close();
+
+// BINARY LIKHNA
+OutputStream outputStream = new FileOutputStream("data.bin");
+// data likho yahan
+outputStream.close();
