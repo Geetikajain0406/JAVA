@@ -1,0 +1,8 @@
+import java.util.*;
+class Main {
+    public static void main(String[] args) {
+    
+       ArrayList <Integer> l=new ArrayList<>(Arrays.asList(1,2,3,4,5));
+       l.forEach(v->System.out.println(v));
+    }
+}
