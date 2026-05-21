@@ -1,0 +1,27 @@
+class Printer {
+
+    synchronized void printMessage(String msg) {
+
+        System.out.print("[" + msg);
+
+        try {
+            Thread.sleep(100);
+        } catch (Exception e) {}
+
+        System.out.println("]");
+    }
+}
+
+public class Test {
+
+    public static void main(String[] args) {
+
+        Printer p = new Printer();
+
+        Thread t1 = new Thread(() -> p.printMessage("Hello"));
+        Thread t2 = new Thread(() -> p.printMessage("World"));
+
+        t1.start();
+        t2.start();
+    }
+}
