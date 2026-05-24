@@ -1,0 +1,110 @@
+Q4 (1) Output of Thread Program
+
+Program:
+
+class A extends Thread {
+    public void run() {
+        System.out.println("A");
+    }
+}
+
+class B extends Thread {
+    public void run() {
+        System.out.println("B");
+    }
+}
+
+public class TestThreads {
+    public static void main(String[] args) {
+
+        A t1 = new A();
+        B t2 = new B();
+
+        t2.start();
+        t1.start();
+    }
+}
+
+Output:
+
+A
+B
+
+OR
+
+B
+A
+
+Explanation:
+
+start() creates separate threads.
+
+Thread scheduling is controlled by JVM/OS.
+
+So we cannot predict which thread executes first.
+
+Even though t2.start() is written first, A may print first.
+
+
+
+---
+
+Q4 (2) Synchronization Program
+
+Program:
+
+class Printer {
+
+    synchronized void printMessage(String msg) {
+
+        System.out.print("[" + msg);
+
+        try {
+            Thread.sleep(100);
+        } catch (Exception e) {}
+
+        System.out.println("]");
+    }
+}
+
+public class Test {
+
+    public static void main(String[] args) {
+
+        Printer p = new Printer();
+
+        Thread t1 = new Thread(() -> p.printMessage("Hello"));
+        Thread t2 = new Thread(() -> p.printMessage("World"));
+
+        t1.start();
+        t2.start();
+    }
+}
+
+Possible Output:
+
+[Hello]
+[World]
+
+OR
+
+[World]
+[Hello]
+
+Will “Hello” and “World” mix?
+
+❌ No, they will not mix.
+
+Why?
+
+printMessage() method is synchronized.
+
+Only one thread can execute the method at a time.
+
+So one complete message prints first, then the other.
+
+
+Mixed output like this will NOT happen:
+
+[Hel[World]
+lo]
