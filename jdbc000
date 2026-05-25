@@ -1,0 +1,17 @@
+/ PreparedStatement → ? placeholder use karo
+String sql = "INSERT INTO students(name, marks) VALUES(?, ?)";
+PreparedStatement ps = con.prepareStatement(sql);
+
+// Set parameters (1-indexed)
+ps.setString(1, "Priya");
+ps.setInt(2, 92);
+ps.executeUpdate();
+
+// Reuse for multiple records
+ps.setString(1, "Ankit");
+ps.setInt(2, 78);
+ps.executeUpdate();
+
+// SELECT with PreparedStatement
+String query = "SELECT * FROM students WHERE name=?";
+PreparedSta
