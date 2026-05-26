@@ -1,0 +1,9 @@
+List<String> names = Arrays.asList("Alice", "Bob", "Charlie", "Adam", "Brian");
+
+List<String> result = names.stream()
+    .filter(n -> n.startsWith("A"))   // Step 1: 'A' se shuru hone waale lo
+    .map(String::toUpperCase)          // Step 2: Uppercase karo
+    .sorted()                          // Step 3: Sort karo
+    .collect(Collectors.toList());     // Step 4: List mein collect karo
+
+System.out.println(result); // Output: [ADAM, ALICE]
