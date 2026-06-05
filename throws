@@ -1,0 +1,10 @@
+// Method declare karta hai ki IOException aa sakti hai
+public void readFile(String path) throws IOException {
+    FileReader f = new FileReader(path); // yeh IOException throw kar sakta hai
+    // ... baaki logic
+}
+
+// Caller ko ya toh try-catch lagana hoga, ya khud throws declare karna hoga
+public void process() throws IOException {
+    readFile("data.txt");  // yahan try-catch nahi lagaya
+}
