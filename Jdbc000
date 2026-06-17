@@ -1,0 +1,74 @@
+import java.sql.*;
+import java.util.*;
+
+class ques {
+    public static void main(String[] args) {
+
+        Connection con = null;
+        Statement st = null;
+
+        Scanner sc = new Scanner(System.in);
+
+        System.out.println("Enter account number:");
+        int acc = sc.nextInt();
+
+        System.out.println("Enter new amount:");
+        double amount = sc.nextDouble();
+
+        try {
+
+            Class.forName("com.mysql.cj.jdbc.Driver");
+
+            System.out.println("Connecting to MySQL...");
+
+            con = DriverManager.getConnection(
+                    "jdbc:mysql://localhost:3306/db1",
+                    "root",
+                    "jiit"
+            );
+
+            System.out.println("Connection successful");
+
+            st = con.createStatement();
+
+            st.executeUpdate("CREATE DATABASE IF NOT EXISTS db1");
+
+            st.executeUpdate("USE db1");
+
+            st.executeUpdate(
+                    "CREATE TABLE IF NOT EXISTS acc(acno INT, amt DOUBLE)"
+            );
+
+            System.out.println("Table created");
+
+            st.executeUpdate("INSERT INTO acc VALUES(1234,30000)");
+            st.executeUpdate("INSERT INTO acc VALUES(5678,5000)");
+
+            System.out.println("Values inserted");
+
+            PreparedStatement pst = con.prepareStatement(
+                    "UPDATE acc SET amt=? WHERE acno=?"
+            );
+
+            pst.setDouble(1, amount);
+            pst.setInt(2, acc);
+
+            pst.executeUpdate();
+
+            System.out.println("Updation done");
+
+            pst.close();
+            st.close();
+            con.close();
+
+        }
+
+        catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        catch (Exception ex) {
+            ex.printStackTrace();
+        }
+    }
+}
